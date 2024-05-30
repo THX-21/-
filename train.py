@@ -89,11 +89,14 @@ if __name__=='__main__':
 
     # 数据导入
     dir='scene_classification'
-    data_train = ImgDataset(os.path.join(dir,'train_data.csv'),True)
+    data_train = ImgDataset(os.path.join(dir,'train_data.csv'),True,[1,2,3],[1,1,1])
+    print(data_train.count_label())
     data_train_loader = DataLoader(data_train, batch_size=batch_size, shuffle=True)
-    data_val = ImgDataset(os.path.join(dir,'val_data.csv'))
+    data_val = ImgDataset(os.path.join(dir,'val_data.csv'),False,[1,2,3],[1,1,1])
+    print(data_val.count_label())
     data_val_loader = DataLoader(data_val, batch_size=batch_size, shuffle=True)
-    data_test = ImgDataset(os.path.join(dir,'test_data.csv'))
+    data_test = ImgDataset(os.path.join(dir,'test_data.csv'),False,[1,2,3],[1,1,1])
+    print(data_test.count_label())
     data_test_loader = DataLoader(data_test, batch_size=batch_size, shuffle=False)
 
     if Freeze:
